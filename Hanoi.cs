@@ -16,7 +16,7 @@ namespace Project1
             }
             else
             {
-                hanoi(Disk - 1, Shoro, payan, temp);
+                hanoi(Disk - 1, Shoro, temp, payan);
                 Console.WriteLine($"{Shoro} -== {payan}");
                 hanoi(Disk - 1, temp, Shoro, payan);
             }
