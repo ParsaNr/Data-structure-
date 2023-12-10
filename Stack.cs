@@ -3,42 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ConsoleApp1.Linked_List.linkedlist;
 
-namespace Project1
+namespace ConsoleApp1
 {
     class Stack
     {
-        private int count;
+        private node top;
 
-        void Push(int[] items, int item)
+        public bool isEmpty()
         {
-            if (count == items.Length)
-                throw new Exception("Queue Is Full");
-            items[count++] = item;
+            return top == null;
         }
-
-        public int Pop(int[] items)
+        public void push(int item)
         {
-            if (IsEmpty())
-                throw new Exception("Queue Is Empty");
-            return items[--count];
-        }
-
-        public int Peek(int[] items)
-        {
-            if (IsEmpty())
+            if (isEmpty())
             {
-                throw new Exception("Queue Is Empty");
+                Console.WriteLine("HeapOverFlow");
             }
-            return items[count - 1];
+            node temp = new node(item);
+            temp.next = top;
+            top = temp;
         }
-
-
-        public Boolean IsEmpty()
+        public void pop()
         {
-            if (count == 0)
-                return true;
-            return false;
+            if (isEmpty())
+            {
+                Console.Write("\nStack Underflow");
+            }
+            top = top.next;
         }
+        public int peek()
+        {
+
+            if (!isEmpty())
+            {
+                return top.data;
+            }
+            else
+            {
+                Console.WriteLine("Stack is empty");
+                return -1;
+            }
+        }
+
     }
 }
